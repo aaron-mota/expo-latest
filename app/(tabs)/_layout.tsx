@@ -35,7 +35,7 @@ export default function TabLayout() {
         name="test"
         options={{
           title: 'Test',
-          headerShown: true,
+          // headerShown: true,
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
           ),
