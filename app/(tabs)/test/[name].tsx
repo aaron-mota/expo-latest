@@ -40,6 +40,11 @@ export default function DetailsPage() {
           <Text style={styles.button}>Go to subtest page</Text>
         </Pressable>
       </Link>
+      <Link asChild href="/test/modal">
+        <Pressable>
+          <Text style={styles.button}>Open modal page</Text>
+        </Pressable>
+      </Link>
     </View>
   );
 }

@@ -10,8 +10,8 @@ export default function DetailsPage() {
 
   return (
     <View style={styles.container}>
-      <Button onPress={() => router.navigate('/test/subtest')} title="Open subtest page" />
-      <Button onPress={() => router.navigate('/test/subtest/section')} title="Open subtest/section page" />
+      <Button onPress={() => router.push('/test/subtest')} title="Open subtest page" />
+      <Button onPress={() => router.push('/test/subtest/section')} title="Open subtest/section page" />
       <Button title="Go to first screen" onPress={() => handleDismiss()} />
     </View>
   );
