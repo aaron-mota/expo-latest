@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Pressable } from 'react-native';
 export default function DetailsPage() {
   return (
     <View style={styles.container}>
-      <Text>Text page</Text>
+      <Text>Test page</Text>
       <Link asChild href="/test/fakeName">
         <Pressable>
           <Text style={styles.button}>Go to dynamic page</Text>

@@ -15,6 +15,7 @@ export default function Layout() {
     >
       <Stack.Screen name="index" options={{ headerShown: true }} />
       <Stack.Screen name="[name]" getId={({ params }) => String(Date.now())} />
+      <Stack.Screen name="subtest/index" options={{ headerShown: true }} />
     </Stack>
   );
 }
