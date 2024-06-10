@@ -4,13 +4,13 @@ import { View, StyleSheet, Button } from 'react-native';
 export default function DetailsPage() {
   const router = useRouter();
 
-  const handleDismiss = (count: number) => {
-    router.dismiss(count);
+  const handleDismiss = () => {
+    router.dismissAll();
   };
 
   return (
     <View style={styles.container}>
-      <Button title="Go to first screen" onPress={() => handleDismiss(5)} />
+      <Button title="Go to first screen" onPress={() => handleDismiss()} />
     </View>
   );
 }
