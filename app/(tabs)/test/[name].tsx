@@ -1,6 +1,6 @@
-import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import { Link, Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
-import { View, Text, StyleSheet, Image, Button } from 'react-native';
+import { View, Text, StyleSheet, Image, Button, Pressable } from 'react-native';
 
 function LogoTitle() {
   return <Image style={styles.image} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />;
@@ -28,13 +28,18 @@ export default function DetailsPage() {
       <Text
         onPress={() => {
           setShowParamsTitle(true);
-          router.setParams({ name: 'Updated' });
+          router.setParams({ name: String(Date.now()) });
         }}
       >
-        Update the title
+        Update the titleee
       </Text>
       <Text>Count: {count}</Text>
       <Button onPress={() => setShowParamsTitle(!showParamsTitle)} title="Toggle title" />
+      <Link asChild href="/test/subtest">
+        <Pressable>
+          <Text style={styles.button}>Go to subtest page</Text>
+        </Pressable>
+      </Link>
     </View>
   );
 }
@@ -48,5 +53,10 @@ const styles = StyleSheet.create({
   image: {
     width: 50,
     height: 50,
+  },
+  button: {
+    padding: 1,
+    fontSize: 18,
+    color: 'teal',
   },
 });
