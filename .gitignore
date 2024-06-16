@@ -24,8 +24,8 @@ expo-env.d.ts
 /android
 
 .env
-.env.local
-.env.production
+.env*.local
 .env.development
-.env.test
 .env.staging
+.env.production
+.env.test
