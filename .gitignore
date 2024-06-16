@@ -22,3 +22,10 @@ expo-env.d.ts
 # CNG
 /ios
 /android
+
+.env
+.env.local
+.env.production
+.env.development
+.env.test
+.env.staging
