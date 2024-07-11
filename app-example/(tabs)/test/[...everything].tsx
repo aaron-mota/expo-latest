@@ -1,6 +1,6 @@
-import { Link, Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import { Link, Stack, useLocalSearchParams, usePathname, useRouter, useSegments } from 'expo-router';
 import { useState } from 'react';
-import { View, Text, StyleSheet, Image, Button, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Image, Button, Pressable, TextInput } from 'react-native';
 
 function LogoTitle() {
   return <Image style={styles.image} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />;
@@ -8,23 +8,59 @@ function LogoTitle() {
 
 export default function DetailsPage() {
   const router = useRouter();
-  const params = useLocalSearchParams();
+  const local = useLocalSearchParams<{ everything: string[]; q?: string }>();
+  const global = useLocalSearchParams();
 
   const [showParamsTitle, setShowParamsTitle] = useState(false);
   const [count, setCount] = useState(0);
+
+  /* @info */
+  const pathname = usePathname();
+  const segments = useSegments<['test'] | ['test', '[name]']>();
+  /* @end */
+
+  const name0 = segments[0]; // Assuming the structure is ['profile', 'user']
+  const name1 = segments[1]; // Assuming the structure is ['profile', 'user']
+  // const name2 = segments[2]; // Assuming the structure is ['profile', 'user']
+
+  const [search, setSearch] = useState(local?.everything?.at(0) ?? '');
 
   return (
     <View style={styles.container}>
       <Stack.Screen
         options={{
           // update title: based on params
-          title: (params.name as string) ?? undefined,
+          // title: (local.name as string) ?? undefined,
+          // title: (local.everything[0] as string) ?? undefined,
           // set title: additional components (e.g. image,  button)
           // headerTitle: (props) => <LogoTitle {...props} />,
           headerTitle: () => (!showParamsTitle ? <LogoTitle /> : undefined),
           headerRight: () => <Button onPress={() => setCount((c) => c + 1)} title="Update count" />,
         }}
       />
+      <TextInput
+        value={search}
+        onChangeText={(search) => {
+          setSearch(search);
+          router.setParams({ q: search });
+        }}
+        placeholderTextColor="#A0A0A0"
+        placeholder="Search"
+        style={{
+          borderRadius: 12,
+          backgroundColor: '#fff',
+          fontSize: 24,
+          color: '#000',
+          margin: 12,
+          padding: 16,
+        }}
+      />
+      <Text>{JSON.stringify(local)}</Text>
+      <Text>{JSON.stringify(global)}</Text>
+      <Text>{pathname}</Text>
+      <Text>Name0: {name0}</Text>
+      <Text>Name1: {name1}</Text>
+      {/* <Text>Name2: {name2}</Text> */}
       <Text
         onPress={() => {
           setShowParamsTitle(true);

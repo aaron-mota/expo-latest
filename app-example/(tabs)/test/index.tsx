@@ -5,7 +5,13 @@ export default function DetailsPage() {
   return (
     <View style={styles.container}>
       <Text>Test page</Text>
-      <Link asChild href="/test/fakeName">
+      {/* <Link asChild href="/test/fakeName"> */}
+      <Link
+        asChild
+        href={{
+          pathname: '/test/fakeName',
+        }}
+      >
         <Pressable>
           <Text style={styles.button}>Go to dynamic page</Text>
         </Pressable>
