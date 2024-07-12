@@ -10,7 +10,7 @@ import { ButtonBack } from '@/components/ButtonBack';
 // import { Feather } from '@expo/vector-icons';
 import { useThemeColor } from '@/hooks/useThemeColor';
 import { theme } from '@/theme';
-import { ButtonEdit } from '@/components/ButtonEdit';
+import { ButtonCreate } from '@/components/ButtonCreate';
 
 export default function TabLayout() {
   // const colorScheme = useColorScheme();
@@ -76,7 +76,7 @@ export default function TabLayout() {
           headerShown: true,
           // headerTitle: 'Journal2',
           headerLeft: () => (Platform.OS === 'ios' ? <ButtonBack /> : null),
-          headerRight: () => (Platform.OS === 'ios' ? <ButtonEdit /> : null),
+          headerRight: () => (Platform.OS === 'ios' ? <ButtonCreate label="Add Entry" /> : null),
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
           ),
