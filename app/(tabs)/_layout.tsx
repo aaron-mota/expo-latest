@@ -2,17 +2,46 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+// import { Colors } from '@/constants/Colors';
+// import { useColorScheme } from '@/hooks/useColorScheme';
+import { Platform } from 'react-native';
+import { BackButton } from '@/components/BackButton';
+import { TabBarButton } from '@/components/TabBarButton';
+import { Feather } from '@expo/vector-icons';
+import { useThemeColor } from '@/hooks/useThemeColor';
+import { theme } from '@/theme';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  // const colorScheme = useColorScheme();
+
+  // react conf app
+  const tabBarBackgroundColor = useThemeColor({
+    light: theme.light.background,
+    dark: theme.dark.background,
+  });
+
+  const tabBarActiveTintColor = useThemeColor({
+    light: theme.light.tint,
+    dark: theme.dark.tint,
+    // light: theme.colorReactDarkBlue,
+    // dark: theme.colorWhite,
+  });
+
+  const tabBarInactiveTintColor = useThemeColor({
+    light: theme.colorGrey,
+    dark: `rgba(255, 255, 255, 0.35)`,
+  });
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
+        // tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor,
+        tabBarInactiveTintColor,
+        tabBarStyle: {
+          backgroundColor: tabBarBackgroundColor,
+        },
       }}
     >
       <Tabs.Screen
@@ -29,12 +58,24 @@ export default function TabLayout() {
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
           ),
+          tabBarButton: (props) => (
+            <TabBarButton
+              {...props}
+              activeTintColor={tabBarActiveTintColor}
+              inactiveTintColor={tabBarInactiveTintColor}
+              icon={({ color }) => <Feather size={24} name="calendar" color={color} />}
+            />
+          ),
         }}
       />
       <Tabs.Screen
         name="journal"
         options={{
           title: 'Journal',
+          headerShown: true,
+          // headerTitle: 'Journal2',
+          headerLeft: () => (Platform.OS === 'ios' ? <BackButton /> : null),
+          headerRight: () => null,
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
           ),

@@ -3,12 +3,14 @@ import { StyleSheet, ScrollView, View } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { Skeleton } from '@/components/Skeleton';
+import { useThemeColor } from '@/hooks/useThemeColor';
+import { theme } from '@/theme';
 
 export default function Tab() {
   return (
     <ScrollView>
       <View style={styles.content}>
-        <ThemedView safeArea style={styles.titleContainer}>
+        <ThemedView style={styles.titleContainer}>
           <ThemedText type="title">Journal</ThemedText>
           <ThemedText>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac nunc nec nisl aliquam</ThemedText>
         </ThemedView>
@@ -19,8 +21,11 @@ export default function Tab() {
 }
 
 function JournalEntries() {
+  const shadow = useThemeColor({ light: theme.dropShadow, dark: undefined });
+
   return Array.from({ length: 6 }).map((_, index) => (
-    <ThemedView key={index} style={styles.journalEntry}>
+    <ThemedView key={index} style={[styles.journalEntry, shadow]}>
+      {/* // <ThemedView key={index} style={[styles.journalEntry]}> */}
       <View style={{ alignItems: 'center', gap: 8 }}>
         <Skeleton variant="circular" />
         <Skeleton variant="text" width={40} />
@@ -43,7 +48,7 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     backgroundColor: 'transparent',
-    marginTop: 6,
+    paddingTop: 16,
     paddingHorizontal: 32,
     gap: 8,
   },
@@ -51,8 +56,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     padding: 16,
-    shadowColor: 'black',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.15,
+    // shadowColor: 'black',
+    // shadowOffset: { width: 0, height: 3 },
+    // shadowOpacity: 0.15,
   },
 });
