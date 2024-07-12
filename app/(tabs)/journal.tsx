@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     backgroundColor: 'transparent',
+    marginTop: 6,
     paddingHorizontal: 32,
     gap: 8,
   },
