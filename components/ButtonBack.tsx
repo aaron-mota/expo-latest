@@ -7,7 +7,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useThemeColor } from '@/hooks/useThemeColor';
 import { theme } from '@/theme';
 
-export function BackButton() {
+export function ButtonBack() {
   const router = useRouter();
   const color = useThemeColor({
     light: theme.light.icon,

@@ -5,11 +5,12 @@ import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 // import { Colors } from '@/constants/Colors';
 // import { useColorScheme } from '@/hooks/useColorScheme';
 import { Platform } from 'react-native';
-import { BackButton } from '@/components/BackButton';
-import { TabBarButton } from '@/components/TabBarButton';
-import { Feather } from '@expo/vector-icons';
+import { ButtonBack } from '@/components/ButtonBack';
+// import { TabBarButton } from '@/components/TabBarButton';
+// import { Feather } from '@expo/vector-icons';
 import { useThemeColor } from '@/hooks/useThemeColor';
 import { theme } from '@/theme';
+import { ButtonEdit } from '@/components/ButtonEdit';
 
 export default function TabLayout() {
   // const colorScheme = useColorScheme();
@@ -58,14 +59,14 @@ export default function TabLayout() {
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
           ),
-          tabBarButton: (props) => (
-            <TabBarButton
-              {...props}
-              activeTintColor={tabBarActiveTintColor}
-              inactiveTintColor={tabBarInactiveTintColor}
-              icon={({ color }) => <Feather size={24} name="calendar" color={color} />}
-            />
-          ),
+          // tabBarButton: (props) => (
+          //   <TabBarButton
+          //     {...props}
+          //     activeTintColor={tabBarActiveTintColor}
+          //     inactiveTintColor={tabBarInactiveTintColor}
+          //     icon={({ color }) => <Feather size={24} name="calendar" color={color} />}
+          //   />
+          // ),
         }}
       />
       <Tabs.Screen
@@ -74,8 +75,8 @@ export default function TabLayout() {
           title: 'Journal',
           headerShown: true,
           // headerTitle: 'Journal2',
-          headerLeft: () => (Platform.OS === 'ios' ? <BackButton /> : null),
-          headerRight: () => null,
+          headerLeft: () => (Platform.OS === 'ios' ? <ButtonBack /> : null),
+          headerRight: () => (Platform.OS === 'ios' ? <ButtonEdit /> : null),
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
           ),
