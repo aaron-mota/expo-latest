@@ -1,7 +1,8 @@
-import { StyleSheet, ScrollView, View, type ViewProps, DimensionValue } from 'react-native';
+import { StyleSheet, ScrollView, View } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { Skeleton } from '@/components/Skeleton';
 
 export default function Tab() {
   return (
@@ -21,7 +22,7 @@ function JournalEntries() {
   return Array.from({ length: 6 }).map((_, index) => (
     <ThemedView key={index} style={styles.journalEntry}>
       <View style={{ alignItems: 'center', gap: 8 }}>
-        <ImagePlaceholder style={styles.imagePlaceholder} />
+        <Skeleton variant="circular" />
         <Skeleton variant="text" width={40} />
       </View>
       <View style={{ flex: 1, marginLeft: 16, gap: 8 }}>
@@ -32,46 +33,6 @@ function JournalEntries() {
       </View>
     </ThemedView>
   ));
-}
-
-interface SkeletonProps extends ViewProps {
-  variant?: 'rectangular' | 'text' | 'rounded'; // | 'circular';
-  width?: DimensionValue;
-  height?: DimensionValue;
-}
-
-function Skeleton(props: SkeletonProps) {
-  const { variant = 'rectangular', height = '100%', width = '100%', style, ...otherProps } = props;
-
-  const backgroundColor = { backgroundColor: 'rgba(0, 0, 0, 0.1)' };
-
-  const skeletonStyles = {
-    rectangular: {
-      width: width,
-      height: height,
-    },
-    // circular: {
-    //   width: width,
-    //   height: width,
-    //   borderRadius: 1000,
-    // },
-    text: {
-      width: width,
-      height: 16,
-      borderRadius: 4,
-    },
-    rounded: {
-      width: width,
-      height: height,
-      borderRadius: 4,
-    },
-  };
-
-  return <View style={[skeletonStyles[variant], backgroundColor, style]} {...otherProps} />;
-}
-
-function ImagePlaceholder(props: ViewProps) {
-  return <View {...props} />;
 }
 
 const styles = StyleSheet.create({
@@ -85,12 +46,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     gap: 8,
   },
-  imagePlaceholder: {
-    width: 64,
-    height: 64,
-    borderRadius: 64 / 2,
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
-  },
   journalEntry: {
     display: 'flex',
     flexDirection: 'row',
@@ -98,7 +53,5 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
-    // borderRadius: 8,
-    // backgroundColor: 'rgba(0, 0, 0, 0.1)',
   },
 });
