@@ -4,6 +4,7 @@ import { ThemedView } from '@/components/ThemedView';
 import { theme } from '@/theme';
 import { StyleSheet, View } from 'react-native';
 import { TJournalEntry } from '../_lib';
+import { convertDate } from '@/helpers/convertDate';
 
 interface Props {
   doc: TJournalEntry;
@@ -14,7 +15,7 @@ export function JournalEntry({ doc }: Props) {
     <ThemedView style={styles.container}>
       <View style={{ alignItems: 'center', gap: 8 }}>
         <Avatar size={64} source={doc.image} />
-        <ThemedText>{doc.date}</ThemedText>
+        <ThemedText>{convertDate(doc.date)}</ThemedText>
       </View>
       <View style={{ flex: 1, marginLeft: 16, gap: 8 }}>
         <ThemedText>{doc.title}</ThemedText>
