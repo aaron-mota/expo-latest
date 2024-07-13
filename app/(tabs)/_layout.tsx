@@ -70,7 +70,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="journal"
+        name="journal/index"
         options={{
           title: 'Journal',
           headerShown: true,
