@@ -2,7 +2,7 @@ import { theme } from '@/theme';
 import { View } from 'react-native';
 import { Area, CartesianChart } from 'victory-native';
 
-const DATA = Array.from({ length: 31 }, (_, i) => ({
+const DATA = Array.from({ length: 32 }, (_, i) => ({
   x: i,
   y: 40 + 30 * Math.random(),
 }));
