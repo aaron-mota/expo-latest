@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { Chart } from './_components';
 
 export default function Tab() {
   return (
@@ -15,6 +16,7 @@ export default function Tab() {
         <ThemedText type="title">Scale</ThemedText>
       </ThemedView>
       <ThemedText>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac nunc nec nisl aliquam</ThemedText>
+      <Chart />
     </ParallaxScrollView>
   );
 }

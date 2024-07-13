@@ -83,7 +83,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="scale"
+        name="scale/index"
         options={{
           title: 'Scale',
           tabBarIcon: ({ color, focused }) => (

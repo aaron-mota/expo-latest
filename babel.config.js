@@ -4,3 +4,5 @@ module.exports = function (api) {
     presets: ['babel-preset-expo'],
   };
 };
+
+// possibly need react-native-reanimated/plugin ("plugins list") (https://github.com/FormidableLabs/victory-native-xl)
